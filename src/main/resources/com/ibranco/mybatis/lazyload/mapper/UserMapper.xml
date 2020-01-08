@@ -3,12 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibranco.mybatis.lazyload.mapper.UserMapper">
+    <cache/>
     <sql id="query">
-        select id,username,password,rid from newuser
+        select id,username,password,rid,name from newuser
     </sql>
 
+    <resultMap id="userMap" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="rid" property="rid"/>
+        <result column="name" property="name"/>
+        <collection property="accounts" ofType="account" select="com.ibranco.mybatis.lazyload.mapper.AccountMapper.findByUid" column="id">
+
+        </collection>
+    </resultMap>
     <select id="findAll" resultType="user">
        <include refid="query"/>
     </select>
+    <select id="findById" parameterType="int" resultType="user" useCache="true">
+        <include refid="query"/>
+        where id = #{id}
+    </select>
 
+    <select id="findAllUser" resultMap="userMap">
+        <include refid="query"/>
+    </select>
 </mapper>

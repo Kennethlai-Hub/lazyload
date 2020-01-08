@@ -1,9 +1,10 @@
 package com.ibranco.mybatis.lazyload.domain;
 
 import javax.management.relation.Role;
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String username;
     private String password;
@@ -74,16 +75,16 @@ public class User {
         this.accounts = accounts;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", rid=" + rid +
-                ", name='" + name + '\'' +
-                ", accounts=" + accounts +
-                ", roles=" + roles +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", rid=" + rid +
+//                ", name='" + name + '\'' +
+//                ", accounts=" + accounts +
+//                ", roles=" + roles +
+//                '}';
+//    }
 }

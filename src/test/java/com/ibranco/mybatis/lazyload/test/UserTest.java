@@ -23,12 +23,13 @@ public class UserTest {
     private SqlSession sqlSession;
     private UserMapper userDao;
     private AccountMapper accountMapper;
+    private SqlSessionFactory sqlSessionFactory;
 
     @Before
     public void init() throws IOException {
         inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory sqlSessionFactory = builder.build(inputStream);
+        sqlSessionFactory = builder.build(inputStream);
         sqlSession = sqlSessionFactory.openSession(true);
         userDao = sqlSession.getMapper(UserMapper.class);
         accountMapper = sqlSession.getMapper(AccountMapper.class);
@@ -53,6 +54,43 @@ public class UserTest {
         for (Account item :list){
             logger.info(item);
         }
+    }
+    @Test
+    public void testFindAccountU(){
+        List<Account> list = accountMapper.findAccount();
+//        for (Account item :list){
+//            logger.info(item);
+//        }
+    }
+    @Test
+    public void testFindUser1(){
+        List<User> list = userDao.findAllUser();
+        for (User item :list){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testFirstCache(){
+        User user1 = userDao.findById(2);
+        logger.info(user1);
+        User user2 = userDao.findById(2);
+        logger.info(user2);
+        logger.info(user1 == user2);
+
+
+    }
+    @Test
+    public void testFirstCache1(){
+        User user1 = userDao.findById(2);
+        logger.info(user1);
+        sqlSession.close();
+        sqlSession = sqlSessionFactory.openSession(true);
+        userDao = sqlSession.getMapper(UserMapper.class);
+        User user2 = userDao.findById(2);
+        logger.info(user2);
+        logger.info(user1 == user2);
+
+
     }
 
 }

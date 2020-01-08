@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface AccountMapper {
     List<Account> findAll();
+    List<Account> findAccount();
+    List<Account> findByUid(Integer id);
 }
+

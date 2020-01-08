@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../mybatis-dynamicsql/mybatis-dynamicsql.iml" filepath="$PROJECT_DIR$/../mybatis-dynamicsql/mybatis-dynamicsql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mybatis-join/mybatis-join.iml" filepath="$PROJECT_DIR$/../mybatis-join/mybatis-join.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-lazyload.iml" filepath="$PROJECT_DIR$/mybatis-lazyload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-dmeo/spring-dmeo.iml" filepath="$PROJECT_DIR$/../spring-dmeo/spring-dmeo.iml" />
+    </modules>
+  </component>
+</project>
